@@ -28,8 +28,7 @@
                 app:statusBarScrim="?attr/colorPrimaryVariant"
                 app:collapsedTitleGravity="center"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:titleEnabled="true"
-                app:toolbarId="@id/toolbar_detail">
+                app:titleEnabled="true">
 
                 <ImageView
                     android:id="@+id/detail_image"
@@ -47,8 +46,7 @@
                     app:titleTextColor="?attr/colorOnSurface"
                     app:layout_collapseMode="pin"
                     app:contentInsetStartWithNavigation="0dp"
-                    app:navigationIcon="@drawable/ic_detail_back"
-                    app:menu="@menu/menu_detail" />
+                    app:navigationIcon="@drawable/ic_backbutton" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

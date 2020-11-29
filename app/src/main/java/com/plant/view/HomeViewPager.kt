@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.plant.R
 import com.plant.adapter.ViewPagerAdapter
 import com.plant.databinding.HomeViewPagerBinding
-import kotlinx.android.synthetic.main.home_view_pager.view.*
 
 class HomeViewPager : Fragment() {
 
@@ -38,7 +37,7 @@ class HomeViewPager : Fragment() {
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             0 -> R.drawable.ic_baseline_eco_24
-            1 -> R.drawable.ic_baseline_eco_24
+            1 -> R.drawable.ic_baseline_local_florist_24
             else -> throw IndexOutOfBoundsException()
         }
     }

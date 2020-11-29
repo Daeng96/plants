@@ -3,8 +3,6 @@ package com.plant.utils
 import android.content.Context
 import java.io.IOException
 
-
-
 class Utils {
     companion object {
         fun getJsonData(context: Context, fileName : String): String? {

@@ -40,10 +40,10 @@ class TomatoSpeciesFragment : Fragment() {
 
             dataPlants = if (param1 == 0) {
                 context?.let { context -> Utils.getJsonData(context, ASSET_NAME_TOMATO) }
-                    .toString()
+                        .toString()
             } else {
                 context?.let { context -> Utils.getJsonData(context, ASSET_NAME_PALM) }
-                    .toString()
+                        .toString()
             }
         }
 
@@ -59,7 +59,8 @@ class TomatoSpeciesFragment : Fragment() {
         viewModel.setTomato(plantList)
         viewModel.listPlants.observe(viewLifecycleOwner, { tomato ->
             tomato.data?.let {
-                adapter.setTomato(it) }
+                adapter.setTomato(it)
+            }
         })
 
 
@@ -78,8 +79,8 @@ class TomatoSpeciesFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_tomato_species, container, false)
     }
@@ -88,10 +89,10 @@ class TomatoSpeciesFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(index: Int) =
-            TomatoSpeciesFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_PARAM1, index)
+                TomatoSpeciesFragment().apply {
+                    arguments = Bundle().apply {
+                        putInt(ARG_PARAM1, index)
+                    }
                 }
-            }
     }
 }

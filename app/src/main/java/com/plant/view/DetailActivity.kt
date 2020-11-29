@@ -1,11 +1,12 @@
 package com.plant.view
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,13 +30,14 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         setSupportActionBar(toolbar_detail)
+
         val listView: RecyclerView = findViewById(R.id.list_synonyms)
 
         dTomato = intent.getParcelableExtra(EXTRA_DATA)
 
         Glide.with(this)
                 .load(dTomato?.image_url)
-                .placeholder(ColorDrawable(Color.GREEN))
+                .placeholder(R.drawable.ic_background_detail_img)
                 .into(detail_image)
 
         init(dTomato?.common_name)
@@ -48,15 +50,39 @@ class DetailActivity : AppCompatActivity() {
 
         val synonymList = (dTomato?.synonyms)
 
-        Log.d("size synonim", synonymList?.size.toString())
+        Log.d("size synonym", synonymList?.size.toString())
 
         adapter = ListSynonymsAdapter()
         adapt(listView, adapter)
         dTomato?.synonyms?.let { adapter.setTomato(it) }
 
+        toolbar_detail.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.ic_share -> {
+                    val txt = "${dTomato?.common_name} - Synonyms : ${dTomato?.synonyms}"
+                    val shareIntent = ShareCompat.IntentBuilder.from(this)
+                            .setText(txt)
+                            .setType("text/plain")
+                            .createChooserIntent()
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                    startActivity(shareIntent)
+                    true
+
+                }
+                else -> false
+            }
+        }
+
     }
 
-    private fun adapt(listView : RecyclerView, adapter: ListSynonymsAdapter) {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_detail, menu)
+        return true
+    }
+
+
+    private fun adapt(listView: RecyclerView, adapter: ListSynonymsAdapter) {
         listView.layoutManager = LinearLayoutManager(this)
         listView.adapter = adapter
         listView.setHasFixedSize(true)
@@ -71,7 +97,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    //menampilkan dan menambahka onklik pada navigasi
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true

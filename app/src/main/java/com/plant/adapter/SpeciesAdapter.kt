@@ -40,7 +40,7 @@ class SpeciesAdapter internal constructor() : RecyclerView.Adapter<SpeciesAdapte
             .apply(RequestOptions.circleCropTransform())
             .into(holder.imageUrl)
 
-        holder.itemView.setOnClickListener{listener?.invoke(detil[position])}
+        holder.itemView.setOnClickListener{ listener?.invoke(detil[position])}
 
     }
 
@@ -48,7 +48,7 @@ class SpeciesAdapter internal constructor() : RecyclerView.Adapter<SpeciesAdapte
 
     fun setTomato(list : List<DetailTomato>) {
         this.detil = list
-        Log.d("Size", detil.size.toString())
+        Log.i("Size List Plant", detil.size.toString())
         notifyDataSetChanged()
     }
 }

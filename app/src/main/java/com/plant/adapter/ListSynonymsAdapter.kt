@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.plant.R
 
-class ListSynonymsAdapter internal constructor() : RecyclerView.Adapter<ListSynonymsAdapter.ListViewHolder>() {
+class ListSynonymsAdapter  : RecyclerView.Adapter<ListSynonymsAdapter.ListViewHolder>() {
 
     private var detil = emptyList<String>()
 

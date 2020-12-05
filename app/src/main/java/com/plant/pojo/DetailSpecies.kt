@@ -1,10 +1,11 @@
 package com.plant.pojo
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
+
 
 @Parcelize
-data class DetailTomato(
+data class DetailSpecies(
     var author: String?,
     var bibliography: String?,
     var common_name: String?,

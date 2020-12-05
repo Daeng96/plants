@@ -7,19 +7,25 @@ import android.view.Menu
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.plant.R
 import com.plant.adapter.ListSynonymsAdapter
-import com.plant.pojo.DetailTomato
-import kotlinx.android.synthetic.main.activity_detail.*
+import com.plant.databinding.ActivityDetailBinding
+import com.plant.pojo.DetailSpecies
+import com.plant.viewmodel.DetailViewModel
+
 
 class DetailActivity : AppCompatActivity() {
 
-    private var dTomato: DetailTomato? = null
+    private var dSpecies: DetailSpecies? = null
     private lateinit var adapter: ListSynonymsAdapter
+
+    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var binding: ActivityDetailBinding
 
     companion object {
         const val EXTRA_DATA = "data"
@@ -27,39 +33,40 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbarDetail)
 
-        setSupportActionBar(toolbar_detail)
+        detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         val listView: RecyclerView = findViewById(R.id.list_synonyms)
 
-        dTomato = intent.getParcelableExtra(EXTRA_DATA)
+        dSpecies = intent.getParcelableExtra(EXTRA_DATA)
 
         Glide.with(this)
-                .load(dTomato?.image_url)
+                .load(dSpecies?.image_url)
                 .placeholder(R.drawable.ic_background_detail_img)
-                .into(detail_image)
+                .into(binding.detailImage)
 
-        init(dTomato?.common_name)
+        init(dSpecies?.common_name)
 
-        plant_family.text = dTomato?.family
-        author.text = dTomato?.author
-        plant_scientific_name.text = dTomato?.scientific_name
-        plant_family_common.text = dTomato?.family_common_name
+        binding.plantFamily.text = dSpecies?.family
+        binding.author.text = dSpecies?.author
+        binding.plantScientificName.text = dSpecies?.scientific_name
+        binding.plantFamilyCommon.text = dSpecies?.family_common_name
 
-
-        val synonymList = (dTomato?.synonyms)
+        val synonymList = (dSpecies?.synonyms)
 
         Log.d("size synonym", synonymList?.size.toString())
 
         adapter = ListSynonymsAdapter()
         adapt(listView, adapter)
-        dTomato?.synonyms?.let { adapter.setTomato(it) }
+        dSpecies?.synonyms?.let { adapter.setTomato(it) }
 
-        toolbar_detail.setOnMenuItemClickListener { item ->
+        binding.toolbarDetail.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.ic_share -> {
-                    val txt = "${dTomato?.common_name} - Synonyms : ${dTomato?.synonyms}"
+                    val txt = "${dSpecies?.common_name} - Synonyms : ${dSpecies?.synonyms}"
                     val shareIntent = ShareCompat.IntentBuilder.from(this)
                             .setText(txt)
                             .setType("text/plain")

@@ -4,10 +4,10 @@
     android:id="@+id/frame_plant"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.TomatoSpeciesFragment">
+    tools:context=".view.SpeciesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tomato"
+        android:id="@+id/rvSpecies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_list_tomato"/>

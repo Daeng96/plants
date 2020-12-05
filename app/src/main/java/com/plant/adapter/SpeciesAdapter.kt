@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.plant.R
-import com.plant.pojo.DetailTomato
+import com.plant.pojo.DetailSpecies
 
 class SpeciesAdapter internal constructor() : RecyclerView.Adapter<SpeciesAdapter.ListViewHolder>() {
 
-    private var detil = emptyList<DetailTomato>()
-    private var listener: ((DetailTomato)->Unit)? = null
+    private var detil = emptyList<DetailSpecies>()
+    private var listener: ((DetailSpecies) -> Unit)? = null
 
-    fun click(listener: ((DetailTomato)->Unit)){
+    fun click(listener: ((DetailSpecies)->Unit)){
         this.listener = listener
     }
     class ListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -46,7 +46,7 @@ class SpeciesAdapter internal constructor() : RecyclerView.Adapter<SpeciesAdapte
 
     override fun getItemCount(): Int = detil.size
 
-    fun setTomato(list : List<DetailTomato>) {
+    fun setSpecies(list : List<DetailSpecies>) {
         this.detil = list
         Log.i("Size List Plant", detil.size.toString())
         notifyDataSetChanged()

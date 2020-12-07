@@ -36,7 +36,7 @@ class SpeciesAdapter internal constructor() : RecyclerView.Adapter<SpeciesAdapte
         holder.tomato.text = detil[position].common_name
         Glide.with(holder.itemView.context)
             .load(detil[position].image_url)
-            .error(ColorDrawable(Color.DKGRAY))
+            .error(R.drawable.ic_plants_fg)
             .apply(RequestOptions.circleCropTransform())
             .into(holder.imageUrl)
 

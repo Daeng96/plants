@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Plants</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="plants_in_the_world">Plants In The World</string>
-    <string name="palm_title_tab">Palm</string>
-    <string name="tomato_title_tab">Tomato</string>
+    <string name="palm_title_tab">Species</string>
+    <string name="tomato_title_tab">Plants</string>
     <string name="synonyms">Synonyms</string>
     <string name="picture">Picture</string>
     <string name="share_action_title">Share</string>

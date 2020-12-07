@@ -19,7 +19,7 @@ class HomeViewPager : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = HomeViewPagerBinding.inflate(inflater, container, false)
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager

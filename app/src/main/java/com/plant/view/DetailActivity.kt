@@ -7,7 +7,6 @@ import android.view.Menu
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ShareCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,6 @@ import com.plant.R
 import com.plant.adapter.ListSynonymsAdapter
 import com.plant.databinding.ActivityDetailBinding
 import com.plant.pojo.DetailSpecies
-import com.plant.viewmodel.DetailViewModel
 
 
 class DetailActivity : AppCompatActivity() {
@@ -24,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
     private var dSpecies: DetailSpecies? = null
     private lateinit var adapter: ListSynonymsAdapter
 
-    private lateinit var detailViewModel: DetailViewModel
+//    private lateinit var detailViewModel: DetailViewModel
     private lateinit var binding: ActivityDetailBinding
 
     companion object {
@@ -37,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarDetail)
 
-        detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+//        detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
         val listView: RecyclerView = findViewById(R.id.list_synonyms)
 
